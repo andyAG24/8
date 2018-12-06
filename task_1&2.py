@@ -1,5 +1,4 @@
-phrase_input = input('Введите выражение, используя пробелы и только положительные числа:\n').split(' ')
-phrase_list = list(phrase_input)
+phrase_list = input('Введите выражение, используя пробелы и только положительные числа:\n').split(' ')
 i = 0
 
 def is_number(s):
@@ -9,34 +8,34 @@ def is_number(s):
     except ValueError:
         return False
 
-a = []
+arguments = []
+operations = ('+', '-', '*', '/')
 
-if phrase_list[0] != '+' and phrase_list[0] != '-' and phrase_list[0] != '*' and phrase_list[0] != '/':
-  raise AssertionError('Это не префиксная форма записи')   
-
-while i < len(phrase_list):
-  if phrase_list[i] == '+' or phrase_list[i] == '-' or phrase_list[i] == '*' or phrase_list[i] == '/':
-    znak = phrase_list[i]
-  elif is_number(phrase_list[i]) == True:
-    if int(phrase_list[i]) <= 0: 
-      raise AssertionError('Введено отрицательное число')  
-    a.append(int(phrase_list[i]))
-  i += 1
+if phrase_list[0] not in operations:
+  raise AssertionError('Это не префиксная форма записи')
+for item in phrase_list:
+    if item in operations:
+      operation = item
+    elif is_number(item):
+      try:
+        assert int(item) >= 0
+        arguments.append(int(item))
+      except:
+        print('Только положительные числа!')
 
 try:
-  if znak == '+':
-    final_phrase = a[0] + a[1]
-  elif znak == '-':
-    final_phrase = a[0] - a[1]
-  elif znak == '*':
-    final_phrase = a[0] * a[1]
-  elif znak == '/':
-    final_phrase = a[0] / a[1]
+  if operation == '+':
+    final_phrase = arguments[0] + arguments[1]
+  elif operation == '-':
+    final_phrase = arguments[0] - arguments[1]
+  elif operation == '*':
+    final_phrase = arguments[0] * arguments[1]
+  elif operation == '/':
+    final_phrase = arguments[0] / arguments[1]
 except:
   print('Неправильный ввод')
 
 try:
-  print(a[0], znak, a[1], '=', final_phrase)
+  print(arguments[0], operation, arguments[1], '=', final_phrase)
 except:
   print('')
-

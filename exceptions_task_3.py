@@ -18,7 +18,8 @@ def show_all_list():
     try:
       documents[i]["name"] == ""
     except:
-      documents[i]["name"] = "Владелец не найден"
+      # documents[i]["name"] = "Владелец не найден"
+      raise KeyError("Владелец не найден")
     print(documents[i]["type"], documents[i]["number"], documents[i]["name"])
     i += 1
   print("\n")

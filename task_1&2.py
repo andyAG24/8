@@ -21,7 +21,7 @@ for item in phrase_list:
         assert int(item) >= 0
         arguments.append(int(item))
       except:
-        print('Только положительные числа!')
+        raise AssertionError('Только положительные числа!')
 
 try:
   if operation == '+':

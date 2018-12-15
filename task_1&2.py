@@ -20,8 +20,9 @@ for item in phrase_list:
       try:
         assert int(item) >= 0
         arguments.append(int(item))
+        AssertionError
       except:
-        raise AssertionError('Только положительные числа!')
+        print('Нужно вводить только положительные числа!')
 
 try:
   if operation == '+':
@@ -33,9 +34,9 @@ try:
   elif operation == '/':
     final_phrase = arguments[0] / arguments[1]
 except:
-  print('Неправильный ввод')
+  pass
 
 try:
   print(arguments[0], operation, arguments[1], '=', final_phrase)
 except:
-  print('')
+  pass

@@ -16,10 +16,11 @@ def show_all_list():
   i = 0
   while i <= len(documents) - 1:
     try:
+      KeyError
       documents[i]["name"] == ""
     except:
-      # documents[i]["name"] = "Владелец не найден"
-      raise KeyError("Владелец не найден")
+      documents[i]["name"] = "Владелец не найден"
+      # print("Владелец не найден")
     print(documents[i]["type"], documents[i]["number"], documents[i]["name"])
     i += 1
   print("\n")
